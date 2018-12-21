@@ -1,0 +1,68 @@
+
+<form name="hintsform{SECTION_ID}" class="hints_{SECTION_ID}" width="100%" action="{WB_URL}/modules/hints/save.php" method="post">
+
+<input type="hidden" name="page_id" value="{PAGE_ID}" />
+<input type="hidden" name="section_id" value="{SECTION_ID}" />
+{FTAN}
+{TEXT_OWNER}:
+<select {OWNER_DISABLED} name="owner" >
+    {OWNER_OPTIONS}
+</select>
+
+<span style="margin-left:20px;">{TEXT_SHARED} <input type="checkbox" name="shared" value="shared" {SHARED}/></span>
+<span style="margin-left:20px;">{TEXT_HIDDEN} <input type="checkbox" name="hidden" value="hidden" {HIDDEN}/></span>
+
+<span style="margin-left:20px; margin-right:20px;">{TEXT_BACKGROUND}
+    <script src='{WB_URL}/modules/hints/js/spectrum.js'></script>
+    <link rel='stylesheet' href='{WB_URL}/modules/hints/js/spectrum.css' />
+
+    <input type="text" id='colorpicker{SECTION_ID}' name="background" value="{BACKGROUND}"/>
+
+    <script type="text/javascript" src="{WB_URL}/modules/hints/js/i18n/jquery.spectrum-{LANG}.js"></script>
+
+    <script>
+    var colorpicker{SECTION_ID}=$("#colorpicker{SECTION_ID}").spectrum({
+        color: "{BACKGROUND}",
+        preferredFormat: "hex3",
+        change: function(color) {
+           color.toHexString();
+           document.getElementById('content{SECTION_ID}').style.backgroundColor = color;
+        },
+        showPaletteOnly: true,
+        togglePaletteOnly: true,
+        hideAfterPaletteSelect:true,
+        showPalette: true,
+        showSelectionPalette: true,
+        showInput: true,
+        showInitial: true,
+        maxSelectionSize: 8,
+        localStorageKey: "Hints.Module.Selection.Palette",
+        palette: [            ["#f4cccc","#fce5cd","#fff2cc","#d9ead3","#d0e0e3","#cfe2f3","#d9d2e9","#ead1dc"],
+            ["#ea9999","#f9cb9c","#ffe599","#b6d7a8","#a2c4c9","#9fc5e8","#b4a7d6","#d5a6bd"],
+            ["#e06666","#f6b26b","#ffd966","#93c47d","#76a5af","#6fa8dc","#8e7cc3","#c27ba0"],
+            ["#c00","#e69138","#f1c232","#6aa84f","#45818e","#3d85c6","#674ea7","#a64d79"],
+            ["#900","#b45f06","#bf9000","#38761d","#134f5c","#0b5394","#351c75","#741b47"],
+            ["#600","#783f04","#7f6000","#274e13","#0c343d","#073763","#20124d","#4c1130"]
+        ]
+    });
+    </script>
+</span>
+
+<textarea id="content{SECTION_ID}" name="content" class="hints_content" style="margin-top:5px; background-color: {BACKGROUND};" rows="0" cols="0">{CONTENT}</textarea>
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+    <td align="left">
+        <input type="submit" value="{TEXT_SAVE}" style="width: 150px; margin-top: 5px;" />
+    </td>
+    <td align="right">
+
+        <input type="button" value="{TEXT_CANCEL}" onclick="javascript: window.location = 'index.php';" style="width: 150px; margin-top: 5px;" />
+    </td>
+</tr>
+</table>
+</form>
+    <script src='{WB_URL}/modules/hints/js/autosize.js'></script>
+<script>
+  autosize(document.getElementById('content{SECTION_ID}'));
+</script>
+<!-- END main_block -->
