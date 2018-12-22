@@ -3,7 +3,7 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.3.0
+ * @version         0.3.1
  * @authors         Martin Hecht (mrbaseman)
  * @copyright       (c) 2018 - 2018, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
@@ -71,7 +71,7 @@ if ( isset($_POST['content']) ) {
 
         // admins may change the owner
         if ( in_array(1, $groups)) {
-            $owner = $admin->checkIDKEY($_POST['owner']);
+            $owner = $admin->checkIDKEY('owner');
             $details = $admin->get_user_details($owner);
             if(is_array($details) && ($details['username'] != 'unknown')) {
                 $fields['owner'] = $owner;

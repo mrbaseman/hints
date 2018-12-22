@@ -3,7 +3,7 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.3.0
+ * @version         0.3.1
  * @authors         Martin Hecht (mrbaseman)
  * @copyright       (c) 2018 - 2018, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
@@ -80,7 +80,7 @@ if ( ( !($mode & 2)) || (in_array(1, $groups)) || ($owner == $admin->get_user_id
             $owner_options .= '<option ';
             if($user['user_id'] == $owner) $owner_options .= 'selected ';
             $owner_options .= 'value="'.$admin->getIDKEY($user['user_id']).'">'
-                .$user['display_name'].' ('.$user['username'].')</option>';
+                .($user['display_name']!=''?$user['display_name']:$user['username']).'</option>';
         }
     } else {
             $owner_options = '<option value="">'

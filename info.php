@@ -3,7 +3,7 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.3.0
+ * @version         0.3.1
  * @authors         Martin Hecht (mrbaseman)
  * @copyright       (c) 2018 - 2018, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
@@ -27,7 +27,7 @@ if(!defined('WB_PATH')) {
 $module_directory       = 'hints';
 $module_name            = 'Hints';
 $module_function        = 'page';
-$module_version         = '0.3.0';
+$module_version         = '0.3.1';
 $module_platform        = '2.8.x';
 $module_author          = 'Martin Hecht (mrbaseman)';
 $module_license         = 'GNU General Public License v3 - The javascript features are third party software, spectrum color picker and autosize, both licensed under MIT license';
@@ -35,6 +35,9 @@ $module_description     = 'This module allows you to add comments in the backend
 
 /*
  *      CHANGELOG
+ *
+ *      0.3.1   2018-12-22      - next attempt to fix IDKEY error (thanks to jacobi22)
+ *                              - do not expose usernames (use display names only)
  *
  *      0.3.0   2018-12-21      - offer a color selection palette
  *                              - localization for the color picker
@@ -57,7 +60,7 @@ $module_description     = 'This module allows you to add comments in the backend
  *                              - use an additional pre tag inside div
  *                              - use separeate stylings for div and textarea
  *
- *      0.1.0   2018-12-11      - initial version
+ *      0.1.0   2018-12-11      - initial version (btw. thanks to Franky)
  *
  */
 
