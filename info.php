@@ -3,7 +3,7 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.3.1
+ * @version         0.3.2
  * @authors         Martin Hecht (mrbaseman)
  * @copyright       (c) 2018 - 2018, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
@@ -27,7 +27,7 @@ if(!defined('WB_PATH')) {
 $module_directory       = 'hints';
 $module_name            = 'Hints';
 $module_function        = 'page';
-$module_version         = '0.3.1';
+$module_version         = '0.3.2';
 $module_platform        = '2.8.x';
 $module_author          = 'Martin Hecht (mrbaseman)';
 $module_license         = 'GNU General Public License v3 - The javascript features are third party software, spectrum color picker and autosize, both licensed under MIT license';
@@ -35,6 +35,8 @@ $module_description     = 'This module allows you to add comments in the backend
 
 /*
  *      CHANGELOG
+ *
+ *      0.3.2   2018-12-23      - do not throw users out of backend when attempt to delete is denied (thanks to florian)
  *
  *      0.3.1   2018-12-22      - next attempt to fix IDKEY error (thanks to jacobi22)
  *                              - do not expose usernames (use display names only)
