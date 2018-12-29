@@ -3,7 +3,7 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.3.2
+ * @version         0.3.3
  * @authors         Martin Hecht (mrbaseman)
  * @copyright       (c) 2018 - 2018, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
@@ -20,8 +20,8 @@
 $module_description = 'In diesem Modul k&ouml;nnen Sie im Backend Kommentare zum Zweck der  Dokumentation, Tutorials usw. hinzuf&uuml;gen. Dies ist n&uuml;tzlich, wenn Sie weniger erfahrene Autoren haben, die Hinweise zur Verwendung des Backends ben&ouml;tigen, oder wenn ein Team M&ouml;glickeiten braucht, an denen andere Teammitglieder Hinweise erhalten.';
 
 $MOD_HINTS = array (
-    'SHARED'      => "freigeben",
-    'HIDDEN'      => "versteckt",
+    'SHARED'      => "zum Bearbeiten freigeben",
+    'HIDDEN'      => "Abschnitt verstecken",
     'OWNER'       => "Besitzer",
     'BACKGROUND'  => "Hintergrundfarbe"
 );

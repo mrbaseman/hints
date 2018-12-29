@@ -3,7 +3,7 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.3.2
+ * @version         0.3.3
  * @authors         Martin Hecht (mrbaseman)
  * @copyright       (c) 2018 - 2018, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
@@ -21,8 +21,8 @@ $module_description = 'Ce module vous permet d\'ajouter des commentaires dans le
 
 
 $MOD_HINTS = array (
-    'SHARED'      => "partag&eacute;",
-    'HIDDEN'      => "cach&eacute;",
+    'SHARED'      => "partager pour &eacute;dition",
+    'HIDDEN'      => "section cach&eacute;",
     'OWNER'       => "propri&eacute;taire",
     'BACKGROUND'  => "couleur du fond"
 

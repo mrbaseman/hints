@@ -3,7 +3,7 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.3.2
+ * @version         0.3.3
  * @authors         Martin Hecht (mrbaseman)
  * @copyright       (c) 2018 - 2018, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
@@ -92,8 +92,6 @@ if ( ( !($mode & 2)) || (in_array(1, $groups)) || ($owner == $admin->get_user_id
     if ( !in_array(1, $groups) ) {
          $owner_disabled = "disabled=1";
     }
-
-    $template->set_block('page', 'main_block', 'main');
 
         // Insert vars
         $template->set_var(array(

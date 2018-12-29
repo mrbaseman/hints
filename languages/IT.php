@@ -3,7 +3,7 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.3.2
+ * @version         0.3.3
  * @authors         Martin Hecht (mrbaseman)
  * @copyright       (c) 2018 - 2018, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
@@ -21,8 +21,8 @@ $module_description = 'Questo modulo ti permette di aggiungere commenti nel back
 
 
 $MOD_HINTS = array (
-    'SHARED'      => "sbloccato",
-    'HIDDEN'      => "nascosto",
+    'SHARED'      => "condividere per la modifica",
+    'HIDDEN'      => "sezione nascosta",
     'OWNER'       => "proprietario",
     'BACKGROUND'  => "colore di sfondo"
 

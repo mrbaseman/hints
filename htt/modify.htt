@@ -1,3 +1,4 @@
+<!-- BEGIN main_block -->
 
 <form name="hintsform{SECTION_ID}" class="hints_{SECTION_ID}" width="100%" action="{WB_URL}/modules/hints/save.php" method="post">
 
