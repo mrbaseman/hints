@@ -3,7 +3,7 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.3.3
+ * @version         0.3.4
  * @authors         Martin Hecht (mrbaseman)
  * @copyright       (c) 2018 - 2018, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
@@ -110,6 +110,7 @@ if ( ( !($mode & 2)) || (in_array(1, $groups)) || ($owner == $admin->get_user_id
                 'TEXT_HIDDEN'  => $MOD_HINTS["HIDDEN"],
                 'TEXT_OWNER'   => $MOD_HINTS["OWNER"],
                 'TEXT_BACKGROUND' => $MOD_HINTS["BACKGROUND"],
+                'TEXT_PREVIEW' => $MOD_HINTS["PREVIEW"],
                 'LANGUAGE'     => LANGUAGE,
                 'LANG'         => $lang,
                 'FTAN'         => $tan

@@ -28,6 +28,7 @@
         change: function(color) {
            color.toHexString();
            document.getElementById('content{SECTION_ID}').style.backgroundColor = color;
+           document.getElementById('preview{SECTION_ID}').style.background = color;
         },
         showPaletteOnly: true,
         togglePaletteOnly: true,
@@ -50,10 +51,12 @@
 </span>
 
 <textarea id="content{SECTION_ID}" name="content" class="hints_content" style="margin-top:5px; background-color: {BACKGROUND};" rows="0" cols="0">{CONTENT}</textarea>
+<div id="preview{SECTION_ID}" class="hints_content_div" style="display:none"></div>
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
     <td align="left">
         <input type="submit" value="{TEXT_SAVE}" style="width: 150px; margin-top: 5px;" />
+        <input type="button" value="{TEXT_PREVIEW}" onclick="javascript:  document.getElementById('preview{SECTION_ID}').style.display =  document.getElementById('preview{SECTION_ID}').style.display == 'none' ? null : 'none'; return false;" style="width: 150px; margin-top: 5px;" />
     </td>
     <td align="right">
 
@@ -65,5 +68,10 @@
     <script src='{WB_URL}/modules/hints/js/autosize.js'></script>
 <script>
   autosize(document.getElementById('content{SECTION_ID}'));
+  document.getElementById("preview{SECTION_ID}").innerHTML =  document.getElementById("content{SECTION_ID}").value.replace(/\n/g,"<br/>");
+  document.getElementById("content{SECTION_ID}").oninput = function(){
+    document.getElementById("preview{SECTION_ID}").innerHTML =  document.getElementById("content{SECTION_ID}").value.replace(/\n/g,"<br/>");
+  };
+  document.getElementById("preview{SECTION_ID}").style.background = $("#colorpicker{SECTION_ID}").spectrum("get").toHexString() ;
 </script>
 <!-- END main_block -->

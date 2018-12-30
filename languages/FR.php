@@ -3,7 +3,7 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.3.3
+ * @version         0.3.4
  * @authors         Martin Hecht (mrbaseman)
  * @copyright       (c) 2018 - 2018, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
@@ -24,7 +24,7 @@ $MOD_HINTS = array (
     'SHARED'      => "partager pour &eacute;dition",
     'HIDDEN'      => "section cach&eacute;",
     'OWNER'       => "propri&eacute;taire",
-    'BACKGROUND'  => "couleur du fond"
-
+    'BACKGROUND'  => "couleur du fond",
+    'PREVIEW'     => "aper&ccedil;u"
 );
 
