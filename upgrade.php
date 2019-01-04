@@ -3,9 +3,9 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.3.4
+ * @version         0.4.0
  * @authors         Martin Hecht (mrbaseman)
- * @copyright       (c) 2018 - 2018, Martin Hecht
+ * @copyright       (c) 2018 - 2019, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
  * @license         GNU General Public License v3 - The javascript features are third party software, spectrum color picker and autosize, both licensed under MIT license
  * @platform        2.8.x
@@ -26,27 +26,55 @@ if(!defined('WB_PATH')) {
 
 
 // adding fields new in version 0.2.0:
-//get settings table to see what needs to be created
-$settingstable
+// get table to see what needs to be created
+$table
     = $database->query(
         "SELECT *"
         . " FROM `".TABLE_PREFIX."mod_hints`"
     );
-if($settingstable==NULL) { exit("settings table not found - is the module installed correctly?"); }
+if($table==NULL) { exit("table not found - is the module installed correctly?"); }
 
-$settings = $settingstable->fetchRow();
+$row = $table->fetchRow();
 
 
-// If not already there, add new fields to the existing settings table
-echo'<span class="good"><b>Adding new fields to the settings table</b></span><br />';
+// If not already there, add new fields to the existing table
+echo'<span class="good"><b>Adding new fields to the table</b></span><br />';
 
-if (!isset($settings['background'])){
-    $qs = "ALTER TABLE `".TABLE_PREFIX."mod_hints`"
+if (!isset($row['background'])){
+    $query = "ALTER TABLE `".TABLE_PREFIX."mod_hints`"
         . " ADD `background` INT NOT NULL DEFAULT ".(int)hexdec("FFFFD2")." AFTER `content`";
-    $database->query($qs);
+    $database->query($query);
     if($database->is_error()) {
         echo $database->get_error().'<br />';
     } else {
         echo "Added new field `background` successfully<br />";
     }
 }
+
+
+// adding settings table in version 0.4.0:
+// get table to see what needs to be created
+$settingstable = TABLE_PREFIX."mod_hints_settings";
+$result = $database->query(
+        "SELECT *"
+        . " FROM `".$settingstable."`"
+    );
+    
+if($result==NULL) { 
+
+    $query  = "CREATE TABLE `".$settingstable."` (";
+    $query .= "`id`           INT NOT NULL AUTO_INCREMENT,";
+    $query .= "`section_id`   INT NOT NULL DEFAULT '0',";
+    $query .= "`user_id`      INT NOT NULL DEFAULT '0',";
+    $query .= "`display_mode` INT NOT NULL DEFAULT '0',";
+    $query .= " PRIMARY KEY ( `id` ) )";
+
+    $database->query($query);
+
+    if($database->is_error()) {
+        echo $database->get_error().'<br />';
+    } else {
+        echo "Created settings table successfully<br />";
+    }
+
+} // else ... in future versions we might have to add new columns 

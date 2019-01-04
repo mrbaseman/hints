@@ -3,9 +3,9 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.3.4
+ * @version         0.4.0
  * @authors         Martin Hecht (mrbaseman)
- * @copyright       (c) 2018 - 2018, Martin Hecht
+ * @copyright       (c) 2018 - 2019, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
  * @license         GNU General Public License v3 - The javascript features are third party software, spectrum color picker and autosize, both licensed under MIT license
  * @platform        2.8.x
@@ -45,3 +45,25 @@ $database->query($query);
 $error=$database->get_error();
 
 if($error) $admin->print_error($error, $js_back);
+
+
+$settingstable = TABLE_PREFIX."mod_hints_settings";
+
+
+$query = "DROP TABLE IF EXISTS `".$settingstable."`";
+$database->query($query);
+
+
+$query  = "CREATE TABLE `".$settingstable."` (";
+$query .= "`id`           INT NOT NULL AUTO_INCREMENT,";
+$query .= "`section_id`   INT NOT NULL DEFAULT '0',";
+$query .= "`user_id`      INT NOT NULL DEFAULT '0',";
+$query .= "`display_mode` INT NOT NULL DEFAULT '0',";
+$query .= " PRIMARY KEY ( `id` ) )";
+
+$database->query($query);
+
+$error=$database->get_error();
+
+if($error) $admin->print_error($error, $js_back);
+

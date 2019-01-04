@@ -3,9 +3,9 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.3.4
+ * @version         0.4.0
  * @authors         Martin Hecht (mrbaseman)
- * @copyright       (c) 2018 - 2018, Martin Hecht
+ * @copyright       (c) 2018 - 2019, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
  * @license         GNU General Public License v3 - The javascript features are third party software, spectrum color picker and autosize, both licensed under MIT license
  * @platform        2.8.x
@@ -23,7 +23,15 @@ $module_description = 'Questo modulo ti permette di aggiungere commenti nel back
 $MOD_HINTS = array (
     'SHARED'      => "condividere per la modifica",
     'HIDDEN'      => "sezione nascosta",
-    'OWNER'       => "proprietario",
+    'OWNER'          => "proprietario",
     'BACKGROUND'  => "colore di sfondo",
-    'PREVIEW'     => "anteprima"
- );
+    'PREVIEW'     => "anteprima",
+    'TEXT_GLOBAL_PREFERENCES' => "preferenze globali utilizzate per tutte le nuove sezioni di suggerimenti",
+    'TEXT_SECTION_PREFERENCES' => "preferenze per la sezione corrente",
+    'TEXT_USE_TEXTAREA' => "usa una textarea semplice come input",
+    'TEXT_USE_PREVIEW' => "visualizza il suggerimento e fornisce un pulsante di modifica",
+    'TEXT_USE_WYSIWYG' => "usa un editor wysiwyg",
+    'TEXT_USE_PREVIEW_WYSIWYG' => "fornisce un pulsante di modifica per avviare l'editor di wysiwyg",
+    'TEXT_USE_SECTION_DEFAULT' => "usa le impostazioni modificate dal proprietario",
+    'TEXT_USE_USER_DEFAULT' => "usa le impostazioni predefinite come definito per i nuovi suggerimenti", 
+);

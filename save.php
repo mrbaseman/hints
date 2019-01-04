@@ -3,9 +3,9 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.3.4
+ * @version         0.4.0
  * @authors         Martin Hecht (mrbaseman)
- * @copyright       (c) 2018 - 2018, Martin Hecht
+ * @copyright       (c) 2018 - 2019, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
  * @license         GNU General Public License v3 - The javascript features are third party software, spectrum color picker and autosize, both licensed under MIT license
  * @platform        2.8.x
@@ -39,7 +39,7 @@ if (!$admin->checkFTAN()) {
     exit();
 }
 
-if ( isset($_POST['content']) ) {
+if ( isset($_POST["content$section_id"]) ) {
 
 
     // Get current values
@@ -60,7 +60,7 @@ if ( isset($_POST['content']) ) {
 
         // for authorized users obtain submitted values
         $tags       = array('<?php', '?>' , '<?');
-        $content    = $admin->add_slashes(str_replace($tags, '', $_POST['content']));
+        $content    = $admin->add_slashes(str_replace($tags, '', $_POST["content$section_id"]));
         $mode       = intval(isset($_POST['shared']));
         $mode       += 2*intval(isset($_POST['hidden']));
         $background = intval(hexdec($_POST['background']));
@@ -77,13 +77,13 @@ if ( isset($_POST['content']) ) {
                 $fields['owner'] = $owner;
             }
         }
-
+        
         // owner and admins may change the mode (i.e. unshare a hint)
         if ( in_array(1, $groups) || ($owner == $admin->get_user_id())) {
             $fields['mode'] = $mode;
             $fields['background'] = $background;
         }
-
+    
         $query = "UPDATE `".TABLE_PREFIX."mod_hints` SET ";
         foreach($fields as $key=>$value) $query .= "`".$key."`=  '".$value."', ";
         $query = substr($query, 0, -2)." where `section_id`='".$section_id."'";

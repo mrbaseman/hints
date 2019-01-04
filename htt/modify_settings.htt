@@ -1,0 +1,72 @@
+<!-- BEGIN main_block -->
+<form name="modify" action="{MOD_SAVE_URL}" method="post" style="margin: 0;">
+    <input type="hidden" name="section_id" value="{SECTION_ID}" />
+    <input type="hidden" name="page_id" value="{PAGE_ID}" />
+        {FTAN}
+    <table class="settings_table" cellpadding="2" cellspacing="0" border="0" width="100%">
+        <caption>{TEXT_SECTION_PREFERENCES}</caption>
+        <tr>
+            <th>{TEXT_DISPLAY_MODE}:</th>
+            <td>
+                <input type="radio" name="display_mode" id="use_texarea" value="1" {use_textarea} />
+                <label for="use_textarea">{TEXT_USE_TEXTAREA}</label><br />
+
+                <input type="radio" name="display_mode" id="use_preview" value="2" {use_preview} />
+                <label for="use_preview">{TEXT_USE_PREVIEW}</label><br />
+
+                <input type="radio" name="display_mode" id="use_wysiwyg" value="3" {use_wysiwyg} />
+                <label for="use_wysiwyg">{TEXT_USE_WYSIWYG}</label><br />
+
+                <input type="radio" name="display_mode" id="use_preview_wysiwyg" value="4" {use_preview_wysiwyg} />
+                <label for="use_preview_wysiwyg">{TEXT_USE_PREVIEW_WYSIWYG}</label><br />
+
+                <input type="radio" name="display_mode" id="use_section_default" value="5" {use_section_default} />
+                <label for="use_section_default">{TEXT_USE_SECTION_DEFAULT}</label><br />
+
+                <input type="radio" name="display_mode" id="use_user_default" value="6" {use_user_default} />
+                <label for="use_user_default">{TEXT_USE_USER_DEFAULT}</label><br />
+
+            </td>
+        </tr>    
+      </table>
+
+    <table class="settings_table" cellpadding="2" cellspacing="0" border="0" width="100%">
+        <caption>{TEXT_GLOBAL_PREFERENCES}</caption>
+        <tr>
+            <th>{TEXT_DEFAULT_DISPLAY_MODE}:</th>
+            <td>
+                <input type="radio" name="default_display_mode" id="default_use_texarea" value="1" {default_use_textarea} />
+                <label for="default_use_textarea">{TEXT_USE_TEXTAREA}</label><br />
+
+                <input type="radio" name="default_display_mode" id="default_use_preview" value="2" {default_use_preview} />
+                <label for="default_use_preview">{TEXT_USE_PREVIEW}</label><br />
+
+                <input type="radio" name="default_display_mode" id="default_use_wysiwyg" value="3" {default_use_wysiwyg} />
+                <label for="default_use_wysiwyg">{TEXT_USE_WYSIWYG}</label><br />
+
+                <input type="radio" name="default_display_mode" id="default_use_preview_wysiwyg" value="4" {default_use_preview_wysiwyg} />
+                <label for="default_use_preview_wysiwyg">{TEXT_USE_PREVIEW_WYSIWYG}</label><br />
+
+                <input type="radio" name="default_display_mode" id="default_use_section_default" value="5" {default_use_section_default} />
+                <label for="default_use_section_default">{TEXT_USE_SECTION_DEFAULT}</label><br />
+
+                <input type="radio" name="default_display_mode" id="default_use_user_default" value="6" {default_use_user_default} />
+                <label for="default_use_user_default">{TEXT_USE_USER_DEFAULT}</label><br />
+
+            </td>
+        </tr>    
+      </table>
+
+      <table cellpadding="0" cellspacing="0" border="0" width="100%">
+      <tr>
+          <td align="left">
+              <input type="submit" value="{TEXT_SAVE}" style="width: 150px; margin-top: 5px;" />
+          </td>
+          <td align="right">
+                  <input type="button" value="{TEXT_CANCEL}" onclick="javascript: window.location = '{MOD_CANCEL_URL}';" style="width: 150px; margin-top: 5px;" />
+          </td>
+      </tr>
+      </table>
+    
+</form>        
+<!-- END main_block -->

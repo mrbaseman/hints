@@ -3,9 +3,9 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.3.4
+ * @version         0.4.0
  * @authors         Martin Hecht (mrbaseman)
- * @copyright       (c) 2018 - 2018, Martin Hecht
+ * @copyright       (c) 2018 - 2019, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
  * @license         GNU General Public License v3 - The javascript features are third party software, spectrum color picker and autosize, both licensed under MIT license
  * @platform        2.8.x
@@ -24,5 +24,15 @@ $MOD_HINTS = array (
     'HIDDEN'      => "Abschnitt verstecken",
     'OWNER'       => "Besitzer",
     'BACKGROUND'  => "Hintergrundfarbe",
-    'PREVIEW'     => "Vorschau"
+    'PREVIEW'     => "Vorschau",
+    'TEXT_DEFAULT_DISPLAY_MODE'   => "default Anzeigemodus",
+    'TEXT_DISPLAY_MODE'           => "Anzeigemodus",
+    'TEXT_GLOBAL_PREFERENCES'     => "Globale Einstellungen, die f&uuml;r alle neuen Hints-Abschnitte verwendet werden",
+    'TEXT_SECTION_PREFERENCES'    => "Einstellungen f&uuml;r den aktuellen Abschnitt",
+    'TEXT_USE_TEXTAREA'           => "verwende ein einfaches Textfeld zur Eingabe",
+    'TEXT_USE_PREVIEW'            => "stelle den Hint zusammen mit einem Edit-Button dar",
+    'TEXT_USE_WYSIWYG'            => "verwende einen WYSIWYG Editor",
+    'TEXT_USE_PREVIEW_WYSIWYG'    => "biete einen Edit-Button an um den WYSIWYG-Editor zu starten",
+    'TEXT_USE_SECTION_DEFAULT'    => "verwende die Standardeinstellungen dieses Abschnitts",
+    'TEXT_USE_USER_DEFAULT'       => "verwende die Standardeinstellungen wie f&uuml;r neue Abschnitte definiert",        
 );
