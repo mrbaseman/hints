@@ -3,7 +3,7 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.4.0
+ * @version         0.5.0
  * @authors         Martin Hecht (mrbaseman)
  * @copyright       (c) 2018 - 2019, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
@@ -58,7 +58,7 @@ if ( in_array(1, $groups) || ($owner == $admin->get_user_id()) || ( $mode & 1 ) 
 
 } else {
     if (!headers_sent()) $admin->print_header();
-    $admin->print_error($MESSAGE['GENERIC_SECURITY_ACCESS'], 
+    $admin->print_error($MESSAGE['GENERIC_SECURITY_ACCESS'],
                 ADMIN_URL.'/pages/sections.php?page_id='.$page_id);
     $admin->print_footer();
     // this is important so that the section table is not modified subsequently

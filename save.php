@@ -3,7 +3,7 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.4.0
+ * @version         0.5.0
  * @authors         Martin Hecht (mrbaseman)
  * @copyright       (c) 2018 - 2019, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
@@ -43,7 +43,7 @@ if ( isset($_POST["content$section_id"]) ) {
 
 
     // Get current values
-    $query = "SELECT `content`, `background`, `owner`, `mode`"
+    $query = "SELECT *"
         . " FROM `".TABLE_PREFIX."mod_hints`"
         . " WHERE `section_id`= '".$section_id."'";
 
@@ -62,11 +62,13 @@ if ( isset($_POST["content$section_id"]) ) {
         $tags       = array('<?php', '?>' , '<?');
         $content    = $admin->add_slashes(str_replace($tags, '', $_POST["content$section_id"]));
         $mode       = intval(isset($_POST['shared']));
-        $mode       += 2*intval(isset($_POST['hidden']));
+//      $mode       += 2*intval(isset($_POST['hidden']));
+        $mode       += 2*intval(!isset($_POST['visible']));
         $background = intval(hexdec($_POST['background']));
         if (($mode < 0) || ($mode > 3)) $mode = 0;
         $fields = array(
             'content'    => $content,
+            'background' => $background
         );
 
         // admins may change the owner
@@ -77,13 +79,37 @@ if ( isset($_POST["content$section_id"]) ) {
                 $fields['owner'] = $owner;
             }
         }
-        
-        // owner and admins may change the mode (i.e. unshare a hint)
+
+        // owner and admins may change the mode (i.e. unshare a hint) and group permissions
         if ( in_array(1, $groups) || ($owner == $admin->get_user_id())) {
             $fields['mode'] = $mode;
-            $fields['background'] = $background;
+
+            $readgrps =  array();
+            $writegrps = array();
+
+            // Get existing groups from database
+            $query = "SELECT group_id,name FROM ".TABLE_PREFIX."groups";
+            $results = $database->query($query);
+            if($database->is_error()) {
+                $admin->print_error($database->get_error(), 'index.php');
+            }
+
+            if($results && $results->numRows() > 0) {
+                while($grp = $results->fetchRow()) {
+
+
+                    if(isset( $_POST["rgrp_".$grp['group_id']])) $readgrps[] = $grp['group_id'];
+
+                    if(isset( $_POST["wgrp_".$grp['group_id']])) $writegrps[] = $grp['group_id'];
+                }
+            }
+            $fields['readgrps'] = implode(',', $readgrps);
+            $fields['writegrps'] = implode(',', $writegrps);
+
+            if( $mode & 1 ) $fields['writegrps'] = ''; // visible to all
+            if( !($mode & 2)) $fields['readgrps'] = ''; // visible for all
         }
-    
+
         $query = "UPDATE `".TABLE_PREFIX."mod_hints` SET ";
         foreach($fields as $key=>$value) $query .= "`".$key."`=  '".$value."', ";
         $query = substr($query, 0, -2)." where `section_id`='".$section_id."'";

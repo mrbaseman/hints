@@ -3,7 +3,7 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.4.0
+ * @version         0.5.0
  * @authors         Martin Hecht (mrbaseman)
  * @copyright       (c) 2018 - 2019, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
@@ -47,12 +47,12 @@ if (!$admin->checkFTAN()) {
 }
 
 $print_info_banner = true;
-$admin_header = true; 
+$admin_header = true;
 require(WB_PATH.'/modules/admin.php');
 $tan = $admin->getFTAN();
 
 
-// include core functions 
+// include core functions
 include_once(WB_PATH .'/framework/module.functions.php');
 
 // obtain module directory
@@ -63,8 +63,8 @@ require_once ( !file_exists($lang) ? (dirname(__FILE__))."/languages/EN.php" : $
 
 $user_id = $admin->get_user_id();
 
-$default_settings = array( 
-        "display_mode" => 1 
+$default_settings = array(
+        "display_mode" => 1
 );
 
 // Get current section owner
@@ -103,22 +103,6 @@ if($query_content && $query_content->numRows() > 0 ) {
    $owner_defaults = $query_content->fetchRow();
 }
 
-// Get user settings from DB
-$query = "SELECT *"
-       . " FROM `".TABLE_PREFIX."mod_hints_settings`"
-       . " WHERE `section_id` = '$section_id'"
-       . " AND `user_id` = '$user_id'";
-
-$query_content = $database->query($query);
-
-$user_settings = array();
-if($query_content && $query_content->numRows() > 0 ) {
-   $user_settings = $query_content->fetchRow();
-} else { 
-   $user_settings = $user_defaults;
-}
-
-
 // Get owner settings from DB
 $query = "SELECT *"
        . " FROM `".TABLE_PREFIX."mod_hints_settings`"
@@ -127,48 +111,43 @@ $query = "SELECT *"
 
 $query_content = $database->query($query);
 
-$owner_settings = array();
+$user_settings = $user_defaults;
+$owner_settings = $owner_defaults;
+
 if($query_content && $query_content->numRows() > 0 ) {
    $owner_settings = $query_content->fetchRow();
-} else {
-   $owner_settings = $owner_defaults;
 }
 
-/* this is the logic for modify.php:
-
 if($owner_settings["display_mode"] == 5) { // section default
+   // if the owner sets this it means to impose owner defaults to the user
    $owner_settings = $owner_defaults;
+   $user_settings = $owner_defaults;
 }
 
 if($owner_settings["display_mode"] == 6) { // user default
    $owner_settings = $user_defaults;
 }
 
-if($user_settings["display_mode"] == 5) { // section default
-   $user_settings = $owner_settings;
+// Get user settings from DB
+$query = "SELECT *"
+       . " FROM `".TABLE_PREFIX."mod_hints_settings`"
+       . " WHERE `section_id` = '$section_id'"
+       . " AND `user_id` = '$user_id'";
+
+$query_content = $database->query($query);
+
+if($query_content && $query_content->numRows() > 0 ) {
+   $user_settings = $query_content->fetchRow();
 }
 
-if($user_settings["display_mode"] == 6) { // user default
-   $user_settings = $user_defaults;
-}
-
-// if still not resolved, use the module default
-if($user_settings["display_mode"] == 5) { // section default
-   $user_settings = $default_settings;
-}
-
-if($user_settings["display_mode"] == 6) { // user default
-   $user_settings = $default_settings;
-}
-
-*/
+// see modify.php for the exact mechanism
 
 $display_mode = $user_settings["display_mode"];
 $default_display_mode = $user_defaults["display_mode"];
 
 
 // include template parser class and set template
-if (!class_exists('Template') && file_exists(WB_PATH . '/include/phplib/template.inc')) 
+if (!class_exists('Template') && file_exists(WB_PATH . '/include/phplib/template.inc'))
     require_once(WB_PATH . '/include/phplib/template.inc');
 $tpl = new Template(dirname(__FILE__) . '/htt/');
 

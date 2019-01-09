@@ -3,7 +3,7 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.4.0
+ * @version         0.5.0
  * @authors         Martin Hecht (mrbaseman)
  * @copyright       (c) 2018 - 2019, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
@@ -36,6 +36,8 @@ $query .= "`section_id` INT NOT NULL DEFAULT '0',";
 $query .= "`page_id`    INT NOT NULL DEFAULT '0',";
 $query .= "`owner`      INT NOT NULL DEFAULT '1',";
 $query .= "`mode`       INT NOT NULL DEFAULT '0',";
+$query .= "`readgrps`   TEXT NOT NULL,";
+$query .= "`writegrps`  TEXT NOT NULL,";
 $query .= "`content`    TEXT NOT NULL,";
 $query .= "`background` INT NOT NULL DEFAULT ".(int)hexdec("FFFFD2").",";
 $query .= " PRIMARY KEY ( `section_id` ) )";

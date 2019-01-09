@@ -1,5 +1,5 @@
 <!-- BEGIN header_block -->
-
+<div>
 <form name="hintsform{SECTION_ID}" class="hints_{SECTION_ID}" width="100%" action="{WB_URL}/modules/hints/save.php" method="post">
 
 <input type="hidden" name="page_id" value="{PAGE_ID}" />
@@ -10,17 +10,39 @@
     {OWNER_OPTIONS}
 </select>
 
-<span style="margin-left:20px;">{TEXT_SHARED} <input type="checkbox" name="shared" value="shared" {SHARED}/></span>
-<span style="margin-left:20px;">{TEXT_HIDDEN} <input type="checkbox" name="hidden" value="hidden" {HIDDEN}/></span>
+<span style="margin-left:20px;">{TEXT_SHARED}</span>
+
+<div id="wgrps{SECTION_ID}" class="dropdown-check-list">
+<span class="anchor">{TEXT_WITH_GROUPS}</span>
+  <ul class="items" id="wgrps{SECTION_ID}">
+      <li><input id="{SECTION_ID}_wgrp_all" name="shared" type="checkbox" value="checked" onchange='javascript:
+var newval=document.getElementById("{SECTION_ID}_wgrp_all").checked ; var items = document.getElementById("wgrps{SECTION_ID}").getElementsByTagName("li"); for (var i = 0; i < items.length; ++i) { items[i].firstChild.checked=newval }' {SHARED} {OWNER_DISABLED}/><label for="{SECTION_ID}_wgrp_all">{TEXT_ALL_GROUPS}</label></li>
+     {WRITE_GROUP_OPTIONS}
+  </ul>
+</div>
+
+
+<span style="margin-left:20px;">{TEXT_VISIBLE}</span>
+
+<div id="rgrps{SECTION_ID}" class="dropdown-check-list">
+<span class="anchor">{TEXT_FOR_GROUPS}</span>
+  <ul class="items" id="rgrps{SECTION_ID}">
+      <li><input id="{SECTION_ID}_rgrp_all" name="visible" type="checkbox" value="checked" onchange='javascript:
+var newval=document.getElementById("{SECTION_ID}_rgrp_all").checked ; var items = document.getElementById("rgrps{SECTION_ID}").getElementsByTagName("li"); for (var i = 0; i < items.length; ++i) { items[i].firstChild.checked=newval }' {VISIBLE} {OWNER_DISABLED}/><label for="{SECTION_ID}_rgrp_all">{TEXT_ALL_GROUPS}</label></li>
+       {READ_GROUP_OPTIONS}
+  </ul>
+</div>
+
+
 
 <span style="margin-left:20px; margin-right:20px;">{TEXT_BACKGROUND}
     <script src='{WB_URL}/modules/hints/js/spectrum.js'></script>
     <link rel='stylesheet' href='{WB_URL}/modules/hints/js/spectrum.css' />
 
     <input type="text" id='colorpicker{SECTION_ID}' name="background" value="{BACKGROUND}"/>
-    
+
     <script type="text/javascript" src="{WB_URL}/modules/hints/js/i18n/jquery.spectrum-{LANG}.js"></script>
-    
+
     <script>
     var colorpicker{SECTION_ID}=$("#colorpicker{SECTION_ID}").spectrum({
         color: "{BACKGROUND}",
@@ -28,7 +50,7 @@
         change: function(color) {
            color.toHexString();
            document.getElementById('content{SECTION_ID}').style.backgroundColor = color;
-           document.getElementById('preview{SECTION_ID}').style.background = color; 
+           document.getElementById('preview{SECTION_ID}').style.background = color;
         },
         showPaletteOnly: true,
         togglePaletteOnly: true,
@@ -38,7 +60,7 @@
         showInput: true,
         showInitial: true,
         maxSelectionSize: 8,
-        localStorageKey: "Hints.Module.Selection.Palette", 
+        localStorageKey: "Hints.Module.Selection.Palette",
         palette: [            ["#f4cccc","#fce5cd","#fff2cc","#d9ead3","#d0e0e3","#cfe2f3","#d9d2e9","#ead1dc"],
             ["#ea9999","#f9cb9c","#ffe599","#b6d7a8","#a2c4c9","#9fc5e8","#b4a7d6","#d5a6bd"],
             ["#e06666","#f6b26b","#ffd966","#93c47d","#76a5af","#6fa8dc","#8e7cc3","#c27ba0"],
@@ -46,7 +68,7 @@
             ["#900","#b45f06","#bf9000","#38761d","#134f5c","#0b5394","#351c75","#741b47"],
             ["#600","#783f04","#7f6000","#274e13","#0c343d","#073763","#20124d","#4c1130"]
         ]
-    });    
+    });
     </script>
 </span>
 <!-- END header_block -->
@@ -81,12 +103,14 @@
 <script src='{WB_URL}/modules/hints/js/autosize.js'></script>
 <script>
   autosize(document.getElementById('content{SECTION_ID}'));
-  document.getElementById("preview{SECTION_ID}").innerHTML =  document.getElementById("content{SECTION_ID}").value.replace(/\n/g,"<br/>");
-  document.getElementById("content{SECTION_ID}").oninput = function(){ 
-    document.getElementById("preview{SECTION_ID}").innerHTML =  document.getElementById("content{SECTION_ID}").value.replace(/\n/g,"<br/>"); 
+  document.getElementById("preview{SECTION_ID}").innerHTML = document.getElementById("content{SECTION_ID}").value.replace(/\n/g,"<br/>");
+  document.getElementById("content{SECTION_ID}").oninput = function(){
+    document.getElementById("preview{SECTION_ID}").innerHTML = document.getElementById("content{SECTION_ID}").value.replace(/\n/g,"<br/>");
   };
-  document.getElementById("preview{SECTION_ID}").style.background = $("#colorpicker{SECTION_ID}").spectrum("get").toHexString() ;
+  document.getElementById("preview{SECTION_ID}").style.background = $("#colorpicker{SECTION_ID}").spectrum("get").toHexString();
+
 </script>
+<script src='{WB_URL}/modules/hints/js/dropdown.js'></script>
 <p>&nbsp;</p>
-<hr size='1' />
+</div>
 <!-- END footer_block -->

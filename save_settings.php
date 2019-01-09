@@ -3,7 +3,7 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.4.0
+ * @version         0.5.0
  * @authors         Martin Hecht (mrbaseman)
  * @copyright       (c) 2018 - 2019, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
@@ -40,7 +40,7 @@ $admin->print_header();
 
 $user_id = $admin->get_user_id();
 
-// include core functions 
+// include core functions
 include_once(WB_PATH .'/framework/module.functions.php');
 
 // obtain module directory
@@ -89,7 +89,7 @@ $database->query($query);
 
 // check if there is a db error, otherwise say successful
 if ($database->is_error()) {
-    $admin->print_error($database->get_error(), 
+    $admin->print_error($database->get_error(),
         ADMIN_URL . '/pages/modify.php?page_id=' . $page_id);
     // print admin footer
     $admin->print_footer();
@@ -121,10 +121,10 @@ $database->query($query);
 
 // check if there is a db error, otherwise say successful
 if ($database->is_error()) {
-    $admin->print_error($database->get_error(), 
+    $admin->print_error($database->get_error(),
         ADMIN_URL . '/pages/modify.php?page_id=' . $page_id);
 } else {
-    $admin->print_success($TEXT['SUCCESS'], 
+    $admin->print_success($TEXT['SUCCESS'],
         ADMIN_URL . '/pages/modify.php?page_id=' . $page_id);
 }
 

@@ -27,7 +27,7 @@
                 <label for="use_user_default">{TEXT_USE_USER_DEFAULT}</label><br />
 
             </td>
-        </tr>    
+        </tr>
       </table>
 
     <table class="settings_table" cellpadding="2" cellspacing="0" border="0" width="100%">
@@ -54,7 +54,7 @@
                 <label for="default_use_user_default">{TEXT_USE_USER_DEFAULT}</label><br />
 
             </td>
-        </tr>    
+        </tr>
       </table>
 
       <table cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -67,6 +67,6 @@
           </td>
       </tr>
       </table>
-    
-</form>        
+
+</form>
 <!-- END main_block -->

@@ -2,7 +2,7 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.4.0
+ * @version         0.5.0
  * @authors         Martin Hecht (mrbaseman)
  * @copyright       (c) 2018 - 2019, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
@@ -47,42 +47,42 @@ table.settings_table    {
     border: solid 1px #515d76;
 }
 
-.settings_table caption { 
-    color: #fff !important; 
-    font-size: 16px; 
-    font-weight: bold; 
-    line-height: 160%; 
-    background-color: #515d76; 
-    text-align: left; 
-    margin-top: 8px; 
-    padding-top: 4px; 
-    padding-left: 10px; 
-    height: 35px; 
-    border: 1px #515d76 
+.settings_table caption {
+    color: #fff !important;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 160%;
+    background-color: #515d76;
+    text-align: left;
+    margin-top: 8px;
+    padding-top: 4px;
+    padding-left: 10px;
+    height: 35px;
+    border: 1px #515d76
 }
-.settings_table tr td, 
-.settings_table tr th { 
-    background-attachment: scroll; 
-    background-position: 0 -40px; 
-    margin: 0; 
-    padding: 4px; 
-    border-bottom: 1px solid #becadb 
+.settings_table tr td,
+.settings_table tr th {
+    background-attachment: scroll;
+    background-position: 0 -40px;
+    margin: 0;
+    padding: 4px;
+    border-bottom: 1px solid #becadb
 }
-.settings_table tr.row_a td, 
-.settings_table tr.row_a th { 
-    background-color: #e0eef8; 
-    background-image: none; 
-    background-position: 0 -36px; 
-    border-top: 1px solid #e0e0e0; 
-    border-bottom: 1px solid #999 
+.settings_table tr.row_a td,
+.settings_table tr.row_a th {
+    background-color: #e0eef8;
+    background-image: none;
+    background-position: 0 -36px;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #999
 }
-.settings_table tr.row_b td, 
-.settings_table tr.row_b th { 
-    background-color: #f6faff; 
-    background-image: none; 
-    background-position: 0 -36px; 
-    border-top: 1px solid #e0e0e0; 
-    border-bottom: 1px solid #999 
+.settings_table tr.row_b td,
+.settings_table tr.row_b th {
+    background-color: #f6faff;
+    background-image: none;
+    background-position: 0 -36px;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #999
 }
 .settings_table td {
     vertical-align: top;
@@ -96,4 +96,62 @@ table.settings_table    {
     text-align: right;
     width: 180px !important;
     vertical-align: top;
+}
+
+.dropdown-check-list{
+display: inline-block;
+width: 115px;
+}
+.dropdown-check-list:focus{
+outline:0;
+}
+.dropdown-check-list .anchor {
+width: 115px;
+position: relative;
+cursor: pointer;
+display: inline-block;
+padding-top:5px;
+padding-left:5px;
+padding-bottom:5px;
+padding-right:10px;
+border:1px #ccc solid;
+}
+.dropdown-check-list .anchor:after {
+position: absolute;
+content: "";
+border-left: 2px solid black;
+border-top: 2px solid black;
+padding: 5px;
+right: 10px;
+top: 20%;
+-moz-transform: rotate(-135deg);
+-ms-transform: rotate(-135deg);
+-o-transform: rotate(-135deg);
+-webkit-transform: rotate(-135deg);
+transform: rotate(-135deg);
+}
+.dropdown-check-list .anchor:active:after {
+right: 8px;
+top: 21%;
+}
+.dropdown-check-list ul.items {
+padding: 2px;
+display: none;
+z-index: 100;
+position: absolute;
+background: white;
+border: 1px solid #ccc;
+border-top: none;
+}
+.dropdown-check-list ul.items li {
+list-style: none;
+padding: 5px;
+margin-right: 10px;
+margin-left: 5px;
+}
+.dropdown-check-list.visible .anchor {
+color: #0094ff;
+}
+.dropdown-check-list.visible .items {
+display: block;
 }

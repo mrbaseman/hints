@@ -3,7 +3,7 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.4.0
+ * @version         0.5.0
  * @authors         Martin Hecht (mrbaseman)
  * @copyright       (c) 2018 - 2019, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
@@ -21,7 +21,11 @@ $module_description = 'In diesem Modul k&ouml;nnen Sie im Backend Kommentare zum
 
 $MOD_HINTS = array (
     'SHARED'      => "zum Bearbeiten freigeben",
-    'HIDDEN'      => "Abschnitt verstecken",
+    'WITH_GROUPS' => "f&uuml;r Gruppen",
+    'HIDDEN'      => "Abschnitt ausgeblendet",
+    'VISIBLE'     => "Abschnitt sichtbar",
+    'FOR_GROUPS'  => "f&uuml;r Gruppen",
+    'ALL_GROUPS'  => "alle Gruppen",
     'OWNER'       => "Besitzer",
     'BACKGROUND'  => "Hintergrundfarbe",
     'PREVIEW'     => "Vorschau",
@@ -34,5 +38,5 @@ $MOD_HINTS = array (
     'TEXT_USE_WYSIWYG'            => "verwende einen WYSIWYG Editor",
     'TEXT_USE_PREVIEW_WYSIWYG'    => "biete einen Edit-Button an um den WYSIWYG-Editor zu starten",
     'TEXT_USE_SECTION_DEFAULT'    => "verwende die Standardeinstellungen dieses Abschnitts",
-    'TEXT_USE_USER_DEFAULT'       => "verwende die Standardeinstellungen wie f&uuml;r neue Abschnitte definiert",        
+    'TEXT_USE_USER_DEFAULT'       => "verwende die Standardeinstellungen wie f&uuml;r neue Abschnitte definiert",
 );

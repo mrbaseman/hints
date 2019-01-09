@@ -3,7 +3,7 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.4.0
+ * @version         0.5.0
  * @authors         Martin Hecht (mrbaseman)
  * @copyright       (c) 2018 - 2019, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
@@ -51,6 +51,30 @@ if (!isset($row['background'])){
     }
 }
 
+// adding readgrps in version 0.5.0:
+if (!isset($row['readgrps'])){
+    $query = "ALTER TABLE `".TABLE_PREFIX."mod_hints`"
+        . " ADD `readgrps`   TEXT NOT NULL AFTER `mode`";
+    $database->query($query);
+    if($database->is_error()) {
+        echo $database->get_error().'<br />';
+    } else {
+        echo "Added new field `readgrps` successfully<br />";
+    }
+}
+
+// adding writegrps in version 0.5.0:
+if (!isset($row['writegrps'])){
+    $query = "ALTER TABLE `".TABLE_PREFIX."mod_hints`"
+        . " ADD `writegrps`   TEXT NOT NULL AFTER `readgrps`";
+    $database->query($query);
+    if($database->is_error()) {
+        echo $database->get_error().'<br />';
+    } else {
+        echo "Added new field `writegrps` successfully<br />";
+    }
+}
+
 
 // adding settings table in version 0.4.0:
 // get table to see what needs to be created
@@ -59,8 +83,8 @@ $result = $database->query(
         "SELECT *"
         . " FROM `".$settingstable."`"
     );
-    
-if($result==NULL) { 
+
+if($result==NULL) {
 
     $query  = "CREATE TABLE `".$settingstable."` (";
     $query .= "`id`           INT NOT NULL AUTO_INCREMENT,";
@@ -77,4 +101,4 @@ if($result==NULL) {
         echo "Created settings table successfully<br />";
     }
 
-} // else ... in future versions we might have to add new columns 
+} // else ... in future versions we might have to add new columns

@@ -3,7 +3,7 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.4.0
+ * @version         0.5.0
  * @authors         Martin Hecht (mrbaseman)
  * @copyright       (c) 2018 - 2019, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
@@ -22,7 +22,11 @@ $module_description = 'This module allows you to add comments in the backend for
 
 $MOD_HINTS = array (
     'SHARED'      => "share for editing",
-    'HIDDEN'      => "hide section",
+    'WITH_GROUPS' => "with groups",
+    'HIDDEN'      => "hidden section",
+    'VISIBLE'     => "section visisble",
+    'FOR_GROUPS'  => "for groups",
+    'ALL_GROUPS'  => "all groups",
     'OWNER'       => "owner",
     'BACKGROUND'  => "background color",
     'PREVIEW'     => "preview",
@@ -35,5 +39,5 @@ $MOD_HINTS = array (
     'TEXT_USE_WYSIWYG'            => "use a wysiwyg editor",
     'TEXT_USE_PREVIEW_WYSIWYG'    => "provide an edit button to start the wysiwyg editor",
     'TEXT_USE_SECTION_DEFAULT'    => "use the settings adjusted by the owner",
-    'TEXT_USE_USER_DEFAULT'       => "use the default settings as defined for new hints", 
+    'TEXT_USE_USER_DEFAULT'       => "use the default settings as defined for new hints",
 );

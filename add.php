@@ -3,7 +3,7 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.4.0
+ * @version         0.5.0
  * @authors         Martin Hecht (mrbaseman)
  * @copyright       (c) 2018 - 2019, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
@@ -31,6 +31,9 @@ $sql = 'INSERT INTO `'.TABLE_PREFIX.'mod_hints` '
      . 'SET `page_id` = '.$page_id.', '
      .     '`section_id` = '.$section_id.', '
      .     '`owner` = '.(int)$user_id.', '
+     .     '`mode` = 0, '
+     .     '`readgrps` = \'\', '
+     .     '`writegrps` = \'\', '
      .     '`content` = \'\', '
      .     '`background` = '.(int)hexdec("FFFFD2");
 $database->query($sql);
@@ -42,8 +45,8 @@ $sql = 'UPDATE `'.TABLE_PREFIX.'sections` '
 $database->query($sql);
 
 
-$default_settings = array( 
-        "display_mode" => 1 
+$default_settings = array(
+        "display_mode" => 1
 );
 
 // Get default settings of current user from DB

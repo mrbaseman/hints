@@ -3,7 +3,7 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.4.0
+ * @version         0.5.0
  * @authors         Martin Hecht (mrbaseman)
  * @copyright       (c) 2018 - 2019, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
@@ -22,8 +22,12 @@ $module_description = 'Questo modulo ti permette di aggiungere commenti nel back
 
 $MOD_HINTS = array (
     'SHARED'      => "condividere per la modifica",
+    'WITH_GROUPS' => "con i gruppi",
     'HIDDEN'      => "sezione nascosta",
-    'OWNER'          => "proprietario",
+    'VISIBLE'     => "sezione visibile",
+    'FOR_GROUPS'  => "per i gruppi",
+    'ALL_GROUPS'  => "tutti i gruppi",
+    'OWNER'       => "proprietario",
     'BACKGROUND'  => "colore di sfondo",
     'PREVIEW'     => "anteprima",
     'TEXT_GLOBAL_PREFERENCES' => "preferenze globali utilizzate per tutte le nuove sezioni di suggerimenti",
@@ -33,5 +37,5 @@ $MOD_HINTS = array (
     'TEXT_USE_WYSIWYG' => "usa un editor wysiwyg",
     'TEXT_USE_PREVIEW_WYSIWYG' => "fornisce un pulsante di modifica per avviare l'editor di wysiwyg",
     'TEXT_USE_SECTION_DEFAULT' => "usa le impostazioni modificate dal proprietario",
-    'TEXT_USE_USER_DEFAULT' => "usa le impostazioni predefinite come definito per i nuovi suggerimenti", 
+    'TEXT_USE_USER_DEFAULT' => "usa le impostazioni predefinite come definito per i nuovi suggerimenti",
 );
