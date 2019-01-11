@@ -3,7 +3,7 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.5.0
+ * @version         0.5.1
  * @authors         Martin Hecht (mrbaseman)
  * @copyright       (c) 2018 - 2019, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
@@ -24,7 +24,7 @@ $MOD_HINTS = array (
     'SHARED'      => "share for editing",
     'WITH_GROUPS' => "with groups",
     'HIDDEN'      => "hidden section",
-    'VISIBLE'     => "section visisble",
+    'VISIBLE'     => "section visible",
     'FOR_GROUPS'  => "for groups",
     'ALL_GROUPS'  => "all groups",
     'OWNER'       => "owner",

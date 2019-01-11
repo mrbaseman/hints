@@ -84,7 +84,6 @@ var newval=document.getElementById("{SECTION_ID}_rgrp_all").checked ; var items 
 <textarea id="content{SECTION_ID}" name="content{SECTION_ID}" class="hints_content" style="margin-top:5px; background-color: {BACKGROUND};" rows="0" cols="0">{CONTENT}</textarea>
 <!-- END main_block -->
 <!-- BEGIN footer_block -->
-<div id="preview{SECTION_ID}" class="hints_content_div" style="display:none"></div>
 <div id="okbtn{SECTION_ID}" class="hints_ok_btn">
 
         <input type="submit" value="{TEXT_SAVE}" style="width: 150px; margin-top: 5px;" />
@@ -100,6 +99,8 @@ var newval=document.getElementById("{SECTION_ID}_rgrp_all").checked ; var items 
             <input type="button" value="{TEXT_CANCEL}" onclick="javascript: window.location = 'index.php';" style="width: 150px; margin-top: 5px;" />
         </form>
 </div>
+<p>&nbsp;</p>
+<div id="preview{SECTION_ID}" class="hints_content_div" style="display:none"></div>
 <script src='{WB_URL}/modules/hints/js/autosize.js'></script>
 <script>
   autosize(document.getElementById('content{SECTION_ID}'));
