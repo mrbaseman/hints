@@ -3,8 +3,8 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.5.1
- * @authors         Martin Hecht (mrbaseman)
+ * @version         0.6.0
+ * @authors         Martin Hecht (mrbaseman), Ruud Eisinga (Dev4me)
  * @copyright       (c) 2018 - 2019, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
  * @license         GNU General Public License v3 - The javascript features are third party software, spectrum color picker and autosize, both licensed under MIT license
@@ -29,6 +29,12 @@ $MOD_HINTS = array (
     'OWNER'       => "Besitzer",
     'BACKGROUND'  => "Hintergrundfarbe",
     'PREVIEW'     => "Vorschau",
+    'DEFAULT'     => "Standard",
+    'FLOATING'    => "Aufsteigend",
+    'POPUP'       => "Popup",
+    'BOTTOM'      => "Fu&szlig;zeile",
+    'SHOW'        => "Hinweis anzeigen",
+    'TEXT_MODE'   => "Anzeigemodus",
     'TEXT_DEFAULT_DISPLAY_MODE'   => "default Anzeigemodus",
     'TEXT_DISPLAY_MODE'           => "Anzeigemodus",
     'TEXT_GLOBAL_PREFERENCES'     => "Globale Einstellungen, die f&uuml;r alle neuen Hints-Abschnitte verwendet werden",

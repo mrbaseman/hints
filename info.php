@@ -3,8 +3,8 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.5.1
- * @authors         Martin Hecht (mrbaseman)
+ * @version         0.6.0
+ * @authors         Martin Hecht (mrbaseman), Ruud Eisinga (Dev4me)
  * @copyright       (c) 2018 - 2019, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
  * @license         GNU General Public License v3 - The javascript features are third party software, spectrum color picker and autosize, both licensed under MIT license
@@ -27,14 +27,22 @@ if(!defined('WB_PATH')) {
 $module_directory       = 'hints';
 $module_name            = 'Hints';
 $module_function        = 'page';
-$module_version         = '0.5.1';
+$module_version         = '0.6.0';
 $module_platform        = '2.8.x';
-$module_author          = 'Martin Hecht (mrbaseman)';
+$module_author          = 'Martin Hecht (mrbaseman), Ruud Eisinga (Dev4me)';
 $module_license         = 'GNU General Public License v3 - The javascript features are third party software, spectrum color picker and autosize, both licensed under MIT license';
 $module_description     = 'This module allows you to add comments in the backend for documentation, tutorials, etc. - useful if you have less experienced authors who need some hints how to use the backend or if a team needs some places to put hints for other team members';
 
 /*
  *      CHANGELOG
+ *
+ *
+ *      0.6.0   2019-03-01      - add backend.js to change font color (Ruud)
+ *                              - add a display mode to allow hints to float up to the top (Ruud)
+ *                              - remove section headers when hints are shown readonly (Ruud)
+ *                              - fix background colors (Ruud)
+ *                              - add Dutch language file (Ruud)
+ *                              - add two more display modes: popup and bottom
  *
  *      0.5.1   2019-01-10      - fix typo in language file
  *                              - move preview below the buttons

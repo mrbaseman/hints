@@ -3,8 +3,8 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.5.1
- * @authors         Martin Hecht (mrbaseman)
+ * @version         0.6.0
+ * @authors         Martin Hecht (mrbaseman), Ruud Eisinga (Dev4me)
  * @copyright       (c) 2018 - 2019, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
  * @license         GNU General Public License v3 - The javascript features are third party software, spectrum color picker and autosize, both licensed under MIT license
@@ -61,11 +61,11 @@ if ( isset($_POST["content$section_id"]) ) {
         // for authorized users obtain submitted values
         $tags       = array('<?php', '?>' , '<?');
         $content    = $admin->add_slashes(str_replace($tags, '', $_POST["content$section_id"]));
-        $mode       = intval(isset($_POST['shared']));
-//      $mode       += 2*intval(isset($_POST['hidden']));
+        $mode       = $admin->checkIDKEY('mode') << 2;
+        $mode       += intval(isset($_POST['shared']));
         $mode       += 2*intval(!isset($_POST['visible']));
         $background = intval(hexdec($_POST['background']));
-        if (($mode < 0) || ($mode > 3)) $mode = 0;
+        if (($mode < 0) || ($mode > 15)) $mode = 0;
         $fields = array(
             'content'    => $content,
             'background' => $background
@@ -80,7 +80,7 @@ if ( isset($_POST["content$section_id"]) ) {
             }
         }
 
-        // owner and admins may change the mode (i.e. unshare a hint) and group permissions
+        // owner and admins may change the mode, share or hide a hint, and change group permissions
         if ( in_array(1, $groups) || ($owner == $admin->get_user_id())) {
             $fields['mode'] = $mode;
 

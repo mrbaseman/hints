@@ -2,8 +2,8 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.5.1
- * @authors         Martin Hecht (mrbaseman)
+ * @version         0.6.0
+ * @authors         Martin Hecht (mrbaseman), Ruud Eisinga (Dev4me)
  * @copyright       (c) 2018 - 2019, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
  * @license         GNU General Public License v3 - The javascript features are third party software, spectrum color picker and autosize, both licensed under MIT license
@@ -12,18 +12,80 @@
  *
  **/
 
-.hints_content_div {
-    width:99%;
-    min-height:25px;
-    padding:5px;
+.hints_container select,
+.hints_container select option,
+.hints_container input {
+    font-size: inherit;
 }
 
+.hints_content_div, .hints_content_preview, .hints_content, .hints_content_float {
+    width: auto;
+    margin: 5px;
+    min-height: 25px;
+    padding: 20px 30px;
+    clear:both;
+}
+.hints_content_div h1, .hints_content_preview h1, .hints_content h1, .hints_content_float h1,
+.hints_content_div h2, .hints_content_preview h2, .hints_content h2, .hints_content_float h2,
+.hints_content_div h3, .hints_content_preview h3, .hints_content h3, .hints_content_float h3,
+.hints_content_div h4, .hints_content_preview h4, .hints_content h4, .hints_content_float h4, {
+        color: inherit;
+        margin: 0;
+        padding: 0;
+        text-align: left;
+}
 .hints_content {
-    width:99%;
-    height:25px;
-    padding:5px;
+    width: 99%;
+    margin: 5px 0 5px 0;
+    padding: 0;
 }
 
+.hints_content_float {
+        clear: both; /* fix WBCE argos theme floating elements */
+    width: 85em;
+    margin: auto;
+    z-index: 3000;
+}
+
+/* allow floating images in content */
+.hints_content_preview::after,
+.hints_content_div::after {
+        clear: both;
+        content: " ";
+        display: block;
+}
+
+/* add margin around floating images */
+.hints_content_preview img[style*="float: left"],
+.hints_content_preview img[align="left"],
+.hints_content_float img[style*="float: left"],
+.hints_content_float img[align="left"],
+.hints_content_div img[style*="float: left"],
+.hints_content_div img[align="left"] {
+  margin: 5px 15px 0px 0px;
+}
+
+.hints_content_preview img[style*="float: right"],
+.hints_content_preview img[align="right"],
+.hints_content_float img[style*="float: right"],
+.hints_content_float img[align="right"],
+.hints_content_div img[style*="float: right"],
+.hints_content_div img[align="right"] {
+  margin: 5px 0px 0px 15px;
+}
+
+.hints_control {
+    float: left;
+    width: 20%;
+}
+
+.hints_clear {
+        clear: both;
+}
+
+.hints_control_header {
+  margin: 5px 0px 5px 0px;
+}
 
 .hints_ok_btn {
     width:49%;
@@ -37,8 +99,9 @@
     float: right;
 }
 
+/* reduce width of dropdown menus for wb 2.12 */
 select[name="owner"] {width: auto;}
-
+select[name="mode"] {width: auto;}
 
 
 table.settings_table    {
@@ -154,4 +217,53 @@ color: #0094ff;
 }
 .dropdown-check-list.visible .items {
 display: block;
+}
+
+
+/* for popup and bottom hints (background) */
+.hints_modal {
+  position: fixed; /* Stay in place */
+  z-index: 9800; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+}
+
+/* popup Content/Box */
+.hints_content_popup {
+  background-color: white;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.hints_bottom_close,
+.hints_close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.hints_bottom_close {
+  padding-right: 40px;
+}
+
+.hints_close:hover,
+.hints_close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* bottom hints (the content) */
+.hints_content_bottom {
+  position: fixed;
+  padding: 20px;
+  bottom: 0;
+  background-color: white;;
+  width: 100%;
 }

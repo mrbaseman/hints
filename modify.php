@@ -3,8 +3,8 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.5.1
- * @authors         Martin Hecht (mrbaseman)
+ * @version         0.6.0
+ * @authors         Martin Hecht (mrbaseman), Ruud Eisinga (Dev4me)
  * @copyright       (c) 2018 - 2019, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
  * @license         GNU General Public License v3 - The javascript features are third party software, spectrum color picker and autosize, both licensed under MIT license
@@ -24,6 +24,11 @@ if(!defined('WB_PATH')) {
 /* -------------------------------------------------------- */
 
 
+if(!function_exists("intHex")) {
+        function intHex($background) {
+            return(substr("000000".dechex($background),-6));
+        }
+}
 
 $lang = (dirname(__FILE__))."/languages/". LANGUAGE .".php";
 require_once ( !file_exists($lang) ? (dirname(__FILE__))."/languages/EN.php" : $lang );
@@ -78,15 +83,91 @@ foreach($groups as $cur_gid)
 }
 
 
-$output_mode = 2;
+$output_mode = ( $mode & 12 ) >> 2; // bits 2^2 and 2^3
+
 
 if ( ( !($mode & 2)) || (in_array(1, $groups)) || $in_readgroup || ($owner == $user_id)) {
 
     if ( ( !($mode & 1)) && (!in_array(1, $groups)) && !$in_writegroup && ($owner != $user_id)) {
 
-        $output_mode = 1;
         $content = $content['content'];
-        echo '<div class="hints_content_div" style="background:#'.dechex($background).'">'.nl2br($content).'</div>';
+
+        // default section view
+        if ($output_mode == 0) {
+                // hide section header for wb < 2.10 and wbce (for wb >= 2.10 see backend.js)
+                echo '<style>#wb_'.$section_id.' { display: none } </style>'
+                .  '<div class="hints_content_div hints_inner" id="hints'.$section_id.'" '
+                . ' style="background:#'.intHex($background).'">'.nl2br($content).'</div>';
+        }
+
+        // float to the top (Ruuds method, see backend.js) - the same as above but a different css class
+        if ($output_mode == 1) {
+                // hide section header for wb < 2.10 and wbce (for wb >= 2.10 see backend.js)
+                echo '<style>#wb_'.$section_id.' { display: none } </style>'
+                . '<div class="hints_content_float hints_inner" id="hints'.$section_id.'" '
+                . ' style="background:#'.intHex($background).'">'.nl2br($content).'</div>';
+        }
+
+        // popup a modal
+        if ($output_mode == 2) {
+                // clear the js cookie when we have a fresh php session (i.e. user has logged out and back in again)
+                if (!isset($_SESSION["hints_'.$section_id.'_closed"])||$_SESSION["hints_'.$section_id.'_closed"]!=$_SESSION['session_started'])
+                    echo '<script>document.cookie = "hints'.$section_id.'=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"</script>';
+                $_SESSION["hints_'.$section_id.'_closed"]=$_SESSION['session_started'];
+                echo '<input type="button" id="hints'.$section_id.'_button" value ="'.$MOD_HINTS["SHOW"].'" '
+                . ' onclick = \'document.getElementById("hints'.$section_id.'").style.display = "block";\' />'
+                . '<div class="hints_modal" id="hints'.$section_id.'">'
+                . '<div class="hints_content_popup hints_inner" style="background:#'.intHex($background).'">'
+                . '<span class="hints_close" '
+                . ' onclick = \'document.getElementById("hints'.$section_id.'").style.display = "none";'
+                . '             document.cookie = "hints'.$section_id.'=closed; path=/;" \' >'
+                . '&times;</span>'
+                . '<p>'.nl2br($content).'</p></div></div>' // when the user clicks anywhere outside the hint close it:
+                . '<script>var hints_modal = document.getElementById("hints'.$section_id.'");'
+                . ' window.onclick = function(event) {'
+                . '   if (event.target == hints_modal) {'
+                . '     hints_modal.style.display = "none";'
+                . '   }'
+                . ' };'   // hide the hint when the user has closed it already before
+                . ' var c=document.cookie;'
+                . '  if (c){'
+                . '    if(c.indexOf("hints'.$section_id.'=closed") != -1){'
+                . '       hints_modal.style.display = "none";'
+                . '    }'
+                . '  }'
+                . '</script>';
+        }
+
+        // bottom modal - currently it's mostly the same, except for the css classes
+        if ($output_mode == 3) {
+                // clear the js cookie when we have a fresh php session (i.e. user has logged out and back in again)
+                if (!isset($_SESSION["hints_'.$section_id.'_closed"])||$_SESSION["hints_'.$section_id.'_closed"]!=$_SESSION['session_started'])
+                    echo '<script>document.cookie = "hints'.$section_id.'=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"</script>';
+                $_SESSION["hints_'.$section_id.'_closed"]=$_SESSION['session_started'];
+                echo '<input type="button" id="hints'.$section_id.'_button" value ="'.$MOD_HINTS["SHOW"].'" '
+                . ' onclick = \'document.getElementById("hints'.$section_id.'").style.display = "block";\' />'
+                . '<div class="hints_modal" id="hints'.$section_id.'">'
+                . '<div class="hints_content_bottom hints_inner" style="background:#'.intHex($background).'">'
+                . '<span class="hints_bottom_close" '
+                . ' onclick = \'document.getElementById("hints'.$section_id.'").style.display = "none";'
+                . '             document.cookie = "hints'.$section_id.'=closed; path=/;" \' >'
+                . '&times;</span>'
+                . '<p>'.nl2br($content).'</p></div></div>' // when the user clicks anywhere outside the hint close it:
+                . '<script>var hints_modal = document.getElementById("hints'.$section_id.'");'
+                . ' window.onclick = function(event) {'
+                . '   if (event.target == hints_modal) {'
+                . '     hints_modal.style.display = "none";'
+                . '   }'
+                . ' };'   // hide the hint when the user has closed it already before
+                . ' var c=document.cookie;'
+                . '  if (c){'
+                . '    if(c.indexOf("hints'.$section_id.'=closed") != -1){'
+                . '       hints_modal.style.display = "none";'
+                . '    }'
+                . '  }'
+                . '</script>';
+        }
+
     } else {
 
         $tan = $admin->getFTAN();
@@ -151,6 +232,27 @@ if ( ( !($mode & 2)) || (in_array(1, $groups)) || $in_readgroup || ($owner == $u
 
             }
         }
+
+
+        $output_modes = array (
+                0 => $MOD_HINTS["DEFAULT"],
+                1 => $MOD_HINTS["FLOATING"],
+                2 => $MOD_HINTS["POPUP"],
+                3 => $MOD_HINTS["BOTTOM"]
+        );
+
+        $mode_options = "";
+        foreach ($output_modes as $key => $value){
+                $mode_options .= '<option ';
+                if($key == $output_mode) $mode_options .= 'selected ';
+                $mode_options .= 'value="'.$admin->getIDKEY($key).'">'.$value.'</option>';
+        }
+
+        $mode_disabled="";
+        if ( (!in_array(1, $groups)) && ($owner != $user_id)) {
+             $mode_disabled = "disabled";
+        }
+
 
         // Get default settings of current user from DB
         $query = "SELECT *"
@@ -253,11 +355,13 @@ if ( ( !($mode & 2)) || (in_array(1, $groups)) || $in_readgroup || ($owner == $u
                 'WB_URL'       => WB_URL,
                 'ADMIN_URL'    => ADMIN_URL,
                 'CONTENT'          => $edit_content,
-                'BACKGROUND'   => '#'.dechex(strval($background)),
+                'BACKGROUND'   => '#'.intHex(strval($background)),
                 'OWNER_OPTIONS' => $owner_options,
+                'MODE_OPTIONS'  => $mode_options,
                 'READ_GROUP_OPTIONS' => $read_group_options,
                 'WRITE_GROUP_OPTIONS' => $write_group_options,
                 'OWNER_DISABLED' => $owner_disabled,
+                'MODE_DISABLED' => $mode_disabled,
                 'TEXT_SAVE'    => $TEXT['SAVE'],
                 'TEXT_CANCEL'  => $TEXT['CANCEL'],
                 'TEXT_MODIFY'  => $TEXT['MODIFY'],
@@ -269,6 +373,7 @@ if ( ( !($mode & 2)) || (in_array(1, $groups)) || $in_readgroup || ($owner == $u
                 'TEXT_HIDDEN'  => $MOD_HINTS["HIDDEN"],
                 'TEXT_VISIBLE' => $MOD_HINTS["VISIBLE"],
                 'TEXT_OWNER'   => $MOD_HINTS["OWNER"],
+                'TEXT_MODE'    => $MOD_HINTS["TEXT_MODE"],
                 'TEXT_BACKGROUND' => $MOD_HINTS["BACKGROUND"],
                 'TEXT_PREVIEW' => $MOD_HINTS["PREVIEW"],
                 'TEXT_WITH_GROUPS' => $MOD_HINTS["WITH_GROUPS"],
@@ -297,11 +402,12 @@ if ( ( !($mode & 2)) || (in_array(1, $groups)) || $in_readgroup || ($owner == $u
         if ($show_preview){
             echo  $template->get_var('preview');
             $content = $content['content'];
-            echo '<div class="hints_content_div" style="background:#'.dechex($background).'">'.nl2br($content).'</div>';
+            echo '<div class="hints_content_preview hints_inner" style="background:#'.intHex($background).'">'.nl2br($content).'</div>';
         } else {
             echo $template->get_var('header');
 
             if ($use_wysiwyg){
+                echo '<div class="hints_clear">';
                 if(!function_exists("show_wysiwyg_editor")){
                     $wysiwyg_editor_loaded=true;
                     if (!\defined('WYSIWYG_EDITOR') OR WYSIWYG_EDITOR=="none"
@@ -316,10 +422,17 @@ if ( ( !($mode & 2)) || (in_array(1, $groups)) || $in_readgroup || ($owner == $u
                     }
                 }
                 show_wysiwyg_editor("content$section_id", "content$section_id", $edit_content);
+                echo '</div>';
             } else echo  $template->get_var('main');
 
             echo $template->get_var('footer');
         }
         unset($tan);
     }
-} else echo "(".$MOD_HINTS["HIDDEN"].")";
+} else {
+        // content of this section not visible for the current user
+        echo '<div class="hints_content_div hints_inner" style="background:#'.intHex($background).'"></div>';
+        // hide section header for wb < 2.10 and wbce (for wb >= 2.10 see backend.js)
+        echo '<style>#wb_'.$section_id.' { display: none } </style>';
+}
+

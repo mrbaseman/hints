@@ -1,16 +1,21 @@
 <!-- BEGIN header_block -->
-<div>
+<div class="hints_container">
 <form name="hintsform{SECTION_ID}" class="hints_{SECTION_ID}" width="100%" action="{WB_URL}/modules/hints/save.php" method="post">
 
 <input type="hidden" name="page_id" value="{PAGE_ID}" />
 <input type="hidden" name="section_id" value="{SECTION_ID}" />
 {FTAN}
-{TEXT_OWNER}:
+<div class="hints_control">
+<div class="hints_control_header">
+{TEXT_OWNER}</div>
 <select {OWNER_DISABLED} name="owner" >
     {OWNER_OPTIONS}
 </select>
+</div>
 
-<span style="margin-left:20px;">{TEXT_SHARED}</span>
+<div class="hints_control">
+<div class="hints_control_header">
+{TEXT_SHARED}</div>
 
 <div id="wgrps{SECTION_ID}" class="dropdown-check-list">
 <span class="anchor">{TEXT_WITH_GROUPS}</span>
@@ -20,9 +25,11 @@ var newval=document.getElementById("{SECTION_ID}_wgrp_all").checked ; var items 
      {WRITE_GROUP_OPTIONS}
   </ul>
 </div>
+</div>
 
-
-<span style="margin-left:20px;">{TEXT_VISIBLE}</span>
+<div class="hints_control">
+<div class="hints_control_header">
+{TEXT_VISIBLE}</div>
 
 <div id="rgrps{SECTION_ID}" class="dropdown-check-list">
 <span class="anchor">{TEXT_FOR_GROUPS}</span>
@@ -32,10 +39,20 @@ var newval=document.getElementById("{SECTION_ID}_rgrp_all").checked ; var items 
        {READ_GROUP_OPTIONS}
   </ul>
 </div>
+</div>
 
 
+<div class="hints_control">
+<div class="hints_control_header">
+{TEXT_MODE}</div>
+<select {MODE_DISABLED} name="mode" >
+    {MODE_OPTIONS}
+</select>
+</div>
 
-<span style="margin-left:20px; margin-right:20px;">{TEXT_BACKGROUND}
+<div class="hints_control">
+<div class="hints_control_header">
+{TEXT_BACKGROUND}</div>
     <script src='{WB_URL}/modules/hints/js/spectrum.js'></script>
     <link rel='stylesheet' href='{WB_URL}/modules/hints/js/spectrum.css' />
 
@@ -46,9 +63,9 @@ var newval=document.getElementById("{SECTION_ID}_rgrp_all").checked ; var items 
     <script>
     var colorpicker{SECTION_ID}=$("#colorpicker{SECTION_ID}").spectrum({
         color: "{BACKGROUND}",
-        preferredFormat: "hex3",
+        preferredFormat: "hex6",
         change: function(color) {
-           color.toHexString();
+           color.toHexString(false);
            document.getElementById('content{SECTION_ID}').style.backgroundColor = color;
            document.getElementById('preview{SECTION_ID}').style.background = color;
         },
@@ -61,16 +78,17 @@ var newval=document.getElementById("{SECTION_ID}_rgrp_all").checked ; var items 
         showInitial: true,
         maxSelectionSize: 8,
         localStorageKey: "Hints.Module.Selection.Palette",
-        palette: [            ["#f4cccc","#fce5cd","#fff2cc","#d9ead3","#d0e0e3","#cfe2f3","#d9d2e9","#ead1dc"],
+        palette: [
+                        ["#f4cccc","#fce5cd","#fff2cc","#d9ead3","#d0e0e3","#cfe2f3","#d9d2e9","#ead1dc"],
             ["#ea9999","#f9cb9c","#ffe599","#b6d7a8","#a2c4c9","#9fc5e8","#b4a7d6","#d5a6bd"],
             ["#e06666","#f6b26b","#ffd966","#93c47d","#76a5af","#6fa8dc","#8e7cc3","#c27ba0"],
-            ["#c00","#e69138","#f1c232","#6aa84f","#45818e","#3d85c6","#674ea7","#a64d79"],
-            ["#900","#b45f06","#bf9000","#38761d","#134f5c","#0b5394","#351c75","#741b47"],
-            ["#600","#783f04","#7f6000","#274e13","#0c343d","#073763","#20124d","#4c1130"]
+            ["#cc0000","#e69138","#f1c232","#6aa84f","#45818e","#3d85c6","#674ea7","#a64d79"],
+            ["#990000","#b45f06","#bf9000","#38761d","#134f5c","#0b5394","#351c75","#741b47"],
+            ["#660000","#783f04","#7f6000","#274e13","#0c343d","#073763","#20124d","#4c1130"]
         ]
     });
     </script>
-</span>
+</div>
 <!-- END header_block -->
 <!-- BEGIN preview_block -->
 
@@ -81,7 +99,8 @@ var newval=document.getElementById("{SECTION_ID}_rgrp_all").checked ; var items 
 </form>
 <!-- END preview_block -->
 <!-- BEGIN main_block -->
-<textarea id="content{SECTION_ID}" name="content{SECTION_ID}" class="hints_content" style="margin-top:5px; background-color: {BACKGROUND};" rows="0" cols="0">{CONTENT}</textarea>
+<div class="hints_clear">
+<textarea id="content{SECTION_ID}" name="content{SECTION_ID}" class="hints_content" style="margin-top:5px; background-color: {BACKGROUND};" rows="0" cols="0">{CONTENT}</textarea></div>
 <!-- END main_block -->
 <!-- BEGIN footer_block -->
 <div id="okbtn{SECTION_ID}" class="hints_ok_btn">
@@ -100,7 +119,7 @@ var newval=document.getElementById("{SECTION_ID}_rgrp_all").checked ; var items 
         </form>
 </div>
 <p>&nbsp;</p>
-<div id="preview{SECTION_ID}" class="hints_content_div" style="display:none"></div>
+<div id="preview{SECTION_ID}" class="hints_content_preview" style="display:none"></div>
 <script src='{WB_URL}/modules/hints/js/autosize.js'></script>
 <script>
   autosize(document.getElementById('content{SECTION_ID}'));
@@ -108,7 +127,7 @@ var newval=document.getElementById("{SECTION_ID}_rgrp_all").checked ; var items 
   document.getElementById("content{SECTION_ID}").oninput = function(){
     document.getElementById("preview{SECTION_ID}").innerHTML = document.getElementById("content{SECTION_ID}").value.replace(/\n/g,"<br/>");
   };
-  document.getElementById("preview{SECTION_ID}").style.background = $("#colorpicker{SECTION_ID}").spectrum("get").toHexString();
+  document.getElementById("preview{SECTION_ID}").style.background = $("#colorpicker{SECTION_ID}").spectrum("get").toHexString(false);
 
 </script>
 <script src='{WB_URL}/modules/hints/js/dropdown.js'></script>
