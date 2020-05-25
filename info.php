@@ -3,9 +3,9 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.6.0
+ * @version         0.6.1
  * @authors         Martin Hecht (mrbaseman), Ruud Eisinga (Dev4me)
- * @copyright       (c) 2018 - 2019, Martin Hecht
+ * @copyright       (c) 2018 - 2020, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
  * @license         GNU General Public License v3 - The javascript features are third party software, spectrum color picker and autosize, both licensed under MIT license
  * @platform        2.8.x
@@ -27,7 +27,7 @@ if(!defined('WB_PATH')) {
 $module_directory       = 'hints';
 $module_name            = 'Hints';
 $module_function        = 'page';
-$module_version         = '0.6.0';
+$module_version         = '0.6.1';
 $module_platform        = '2.8.x';
 $module_author          = 'Martin Hecht (mrbaseman), Ruud Eisinga (Dev4me)';
 $module_license         = 'GNU General Public License v3 - The javascript features are third party software, spectrum color picker and autosize, both licensed under MIT license';
@@ -36,6 +36,7 @@ $module_description     = 'This module allows you to add comments in the backend
 /*
  *      CHANGELOG
  *
+ *      0.6.1   2020-05-24      - fix deprecated warning for php 7.4 thanks to Bernd
  *
  *      0.6.0   2019-03-01      - add backend.js to change font color (Ruud)
  *                              - add a display mode to allow hints to float up to the top (Ruud)

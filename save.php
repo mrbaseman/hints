@@ -3,9 +3,9 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.6.0
+ * @version         0.6.1
  * @authors         Martin Hecht (mrbaseman), Ruud Eisinga (Dev4me)
- * @copyright       (c) 2018 - 2019, Martin Hecht
+ * @copyright       (c) 2018 - 2020, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
  * @license         GNU General Public License v3 - The javascript features are third party software, spectrum color picker and autosize, both licensed under MIT license
  * @platform        2.8.x
@@ -64,7 +64,7 @@ if ( isset($_POST["content$section_id"]) ) {
         $mode       = $admin->checkIDKEY('mode') << 2;
         $mode       += intval(isset($_POST['shared']));
         $mode       += 2*intval(!isset($_POST['visible']));
-        $background = intval(hexdec($_POST['background']));
+        $background = intval(hexdec(substr($_POST['background'], 1)));
         if (($mode < 0) || ($mode > 15)) $mode = 0;
         $fields = array(
             'content'    => $content,
