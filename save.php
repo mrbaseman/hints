@@ -3,7 +3,7 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.6.1
+ * @version         0.6.2
  * @authors         Martin Hecht (mrbaseman), Ruud Eisinga (Dev4me)
  * @copyright       (c) 2018 - 2020, Martin Hecht
  * @link            https://github.com/WebsiteBaker-modules/hints
@@ -49,7 +49,7 @@ if ( isset($_POST["content$section_id"]) ) {
 
     $get_content = $database->query($query);
 
-    $content = $get_content->fetchRow( MYSQL_ASSOC );
+    $content = $get_content->fetchRow();
     $owner = (int)$content['owner'];
     $mode = (int)$content['mode'];
     $background = (int)$content['background'];
