@@ -3,9 +3,9 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.6.2
+ * @version         0.6.3
  * @authors         Martin Hecht (mrbaseman), Ruud Eisinga (Dev4me)
- * @copyright       (c) 2018 - 2021, Martin Hecht
+ * @copyright       (c) 2018 - 2022, Martin Hecht
  * @link            https://github.com/mrbaseman/hints
  * @license         GNU General Public License v3 - The javascript features are third party software, spectrum color picker and autosize, both licensed under MIT license
  * @platform        2.8.x
@@ -27,7 +27,7 @@ if(!defined('WB_PATH')) {
 $module_directory       = 'hints';
 $module_name            = 'Hints';
 $module_function        = 'page';
-$module_version         = '0.6.2';
+$module_version         = '0.6.3';
 $module_platform        = '2.8.x';
 $module_author          = 'Martin Hecht (mrbaseman), Ruud Eisinga (Dev4me)';
 $module_license         = 'GNU General Public License v3 - The javascript features are third party software, spectrum color picker and autosize, both licensed under MIT license';
@@ -35,6 +35,8 @@ $module_description     = 'This module allows you to add comments in the backend
 
 /*
  *      CHANGELOG
+ *
+ *      0.6.3   2022-03-21      - use own language variable for preferences to avoid strange translations (thanks to florian)
  *
  *      0.6.2   2020-11-24      - remove MYSQL_ASSOC (thanks to Frank)
  *

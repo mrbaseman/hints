@@ -3,9 +3,9 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.6.2
+ * @version         0.6.3
  * @authors         Martin Hecht (mrbaseman), Ruud Eisinga (Dev4me)
- * @copyright       (c) 2018 - 2021, Martin Hecht
+ * @copyright       (c) 2018 - 2022, Martin Hecht
  * @link            https://github.com/mrbaseman/hints
  * @license         GNU General Public License v3 - The javascript features are third party software, spectrum color picker and autosize, both licensed under MIT license
  * @platform        2.8.x
@@ -34,6 +34,7 @@ $MOD_HINTS = array (
     'POPUP'       => "Popup",
     'BOTTOM'      => "Fu&szlig;zeile",
     'SHOW'        => "Hinweis anzeigen",
+    'PREFERENCES' => "Einstellungen",
     'TEXT_MODE'   => "Anzeigemodus",
     'TEXT_DEFAULT_DISPLAY_MODE'   => "default Anzeigemodus",
     'TEXT_DISPLAY_MODE'           => "Anzeigemodus",

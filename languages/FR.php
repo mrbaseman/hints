@@ -3,9 +3,9 @@
  *
  * @category        page
  * @package         Hints
- * @version         0.6.2
+ * @version         0.6.3
  * @authors         Martin Hecht (mrbaseman), Ruud Eisinga (Dev4me)
- * @copyright       (c) 2018 - 2021, Martin Hecht
+ * @copyright       (c) 2018 - 2022, Martin Hecht
  * @link            https://github.com/mrbaseman/hints
  * @license         GNU General Public License v3 - The javascript features are third party software, spectrum color picker and autosize, both licensed under MIT license
  * @platform        2.8.x
@@ -36,6 +36,7 @@ $MOD_HINTS = array (
     'BOTTOM'      => "bas",
     'SHOW'        => "montre allusion",
     'TEXT_MODE'   => "mode d'affichage",
+    'PREFERENCES' => "Pr&eacute;f&eacute;rences",
     'TEXT_GLOBAL_PREFERENCES' => "Pr&eacute;f&eacute;rences globales utilis&eacute;es pour toutes les nouvelles sections de conseils",
     'TEXT_SECTION_PREFERENCES' => "Pr&eacute;f&eacute;rences pour la section en cours",
     'TEXT_USE_TEXTAREA' => "utilise une zone de texte simple comme entr&eacute;e",
